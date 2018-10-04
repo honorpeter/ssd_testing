@@ -247,8 +247,15 @@ template <typename Dtype>
 void caffe_rng_uniform(const int n, const Dtype a, const Dtype b, Dtype* r) {
   CHECK_GE(n, 0);
   CHECK(r);
-  CHECK_LE(a, b);
-  boost::uniform_real<Dtype> random_distribution(a, caffe_nextafter<Dtype>(b));
+  Dtype x = a;
+  Dtype z = b;
+  if(x > z) {
+    Dtype c = x;
+    x = z;
+    z = c;
+  }
+  CHECK_LE(x, z);
+  boost::uniform_real<Dtype> random_distribution(x, caffe_nextafter<Dtype>(z));
   boost::variate_generator<caffe::rng_t*, boost::uniform_real<Dtype> >
       variate_generator(caffe_rng(), random_distribution);
   for (int i = 0; i < n; ++i) {

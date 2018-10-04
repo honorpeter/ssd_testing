@@ -4,12 +4,12 @@ item {
   display_name: "background"
 }
 item {
-  name: "widemelon"
+  name: "paper"
   label: 1
-  display_name: "aeroplane"
+  display_name: "paper"
 }
 item {
-  name: "heightmelon"
+  name: "bottle"
   label: 2
-  display_name: "bicycle"
+  display_name: "bottle"
 }
